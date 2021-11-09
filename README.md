@@ -109,11 +109,8 @@ Ninja 仅支持 qinglong 2.8.2+
 
    ```bash
    cd /ql/ninja/backend
-   git checkout .
-   git pull
-   pnpm install
    pm2 start
-   cp sendNotify.js /ql/scripts/sendNotify.js
+  
    ```
 
 ### 容器外
