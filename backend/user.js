@@ -211,7 +211,7 @@ module.exports = class User {
         this.eid = body.data[0]._id;
         this.timestamp = body.data[0].timestamp;
         message = `注册成功，${this.nickName}`;
-        this.#sendNotify('有新用户通知...', `新用户 ${this.nickName}(${decodeURIComponent}) 已上线`);
+        this.#sendNotify('有新用户通知...',  `新用户 ${this.nickName}(${decodeURIComponent(this.pt_pin)}) 已上线`);
       }
     } else {
       this.eid = env._id;
@@ -221,7 +221,7 @@ module.exports = class User {
       }
       this.timestamp = body.data.timestamp;
       message = `欢迎回来，${this.nickName}`;
-      this.#sendNotify('摸鱼运行中...', `账号 ${this.nickName}(${decodeURIComponent}) 已更新 CK`);
+      this.#sendNotify('摸鱼运行中...', `账号 ${this.nickName}(${decodeURIComponent(this.pt_pin)}) 已更新 CK`);
     }
     return {
       nickName: this.nickName,
@@ -282,7 +282,7 @@ module.exports = class User {
     if (body.code !== 200) {
       throw new UserError(body.message || '删除账户错误，请重试', 240, body.code || 200);
     }
-    this.#sendNotify('有跑路通知...', `用户 ${this.nickName}(${decodeURIComponent}) 删号跑路了`);
+    this.#sendNotify('有跑路通知...', `用户 ${this.nickName} 删号跑路了`);
     return {
       message: '账户已移除',
     };
